@@ -1,0 +1,3 @@
+export enum ResultadoIMCEnum {
+  ABAIXO_DO_PESO, PESO_NORMAL, SOBRE_PESO, OBESIDADE
+}

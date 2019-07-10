@@ -1,0 +1,66 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <form [formGroup]="form">
+        <div class="card mt-4">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-12">
+                <h1><b>Cadastrar Registro Nutricional</b></h1>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 text-center">
+                <h3>Dados</h3>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-12">
+                <h1><b>Aluno</b></h1>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label">Matrícula:</label>
+              <div class="col-md-3">
+                {{aluno?.codigo}}
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label">Nome:</label>
+              <div class="col-md-3">
+                {{aluno?.pessoa?.nome}}
+              </div>
+            </div>
+            <hr>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="altura">Altura:</label>
+              <div class="col-md-4">
+                <input type="number" placeholder="ex. 1,82" step="0.01" min="0.01" max="3.00" id="altura" name="altura" class="form-control"
+                  formControlName="altura">
+                <app-error-msg [control]="form.get('altura')" label="Altura"></app-error-msg>
+              </div>
+              m(metros)
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="peso">Peso:</label>
+              <div class="col-md-4">
+                <input type="number" placeholder="ex. 65,654" step="000.001" min="000.001" max="500.000" id="peso" name="peso"
+                  class="form-control" formControlName="peso">
+                <app-error-msg [control]="form.get('peso')" label="Peso"></app-error-msg>
+              </div>
+              kg(quilogramas)
+            </div>
+          </div>
+          <div class="card-footer text-right">
+            <button class="btn btn-secondary" (click)="cancelar()" type="button">Cancelar</button>
+            <button class="btn btn-primary" [disabled]="!form.valid" (click)="cadastrar()"><i class="fa fa-save"></i>
+              Salvar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

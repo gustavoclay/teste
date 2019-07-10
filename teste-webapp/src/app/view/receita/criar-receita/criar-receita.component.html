@@ -1,0 +1,77 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <form [formGroup]="form">
+        <div class="card mt-4">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-12">
+                <h1><b>Cadastrar Receita</b></h1>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 text-center">
+                <h3>Dados</h3>
+              </div>
+            </div>
+            <hr>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="nome">Nome:</label>
+              <div class="col-md-10">
+                <input type="text" id="nome" name="nome" class="form-control" formControlName="nome"
+                  [ngClass]="aplicaCssErro('nome')">
+                <app-error-msg [control]="form.get('nome')" label="Nome"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="descricao">Descrição:</label>
+              <div class="col-md-10">
+                <textarea id="descricao" name="descricao" class="form-control" formControlName="descricao"
+                  maxlength="255" [ngClass]="aplicaCssErro('descricao')"></textarea>
+                <app-error-msg [control]="form.get('descricao')" label="Descrição"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="ingredientes">Ingredientes:</label>
+              <div class="col-md-10">
+                <textarea id="ingredientes" name="ingredientes" class="form-control" formControlName="ingredientes"
+                  maxlength="255" [ngClass]="aplicaCssErro('ingredientes')"></textarea>
+                <app-error-msg [control]="form.get('ingredientes')" label="Ingredientes"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="modoPreparo">Mode de Preparo:</label>
+              <div class="col-md-10">
+                <textarea id="modoPreparo" name="modoPreparo" class="form-control" formControlName="modoPreparo"
+                  maxlength="255" [ngClass]="aplicaCssErro('modoPreparo')"></textarea>
+                <app-error-msg [control]="form.get('modoPreparo')" label="Mode de Preparo"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="tipoReceita">Tipo:</label>
+              <div class="col-md-10">
+                <select id="tipoReceita" name="tipoReceita" class="form-control" formControlName="tipoReceita"
+                  [ngClass]="aplicaCssErro('tipoReceita')">
+                  <option value="CAFE_MANHA">Café da Manhã</option>
+                  <option value="ALMOCO">Almoço</option>
+                  <option value="JANTAR">Jantar</option>
+                  <option value="CEIA">Ceia</option>
+                  <option value="LANCHE">Lanche</option>
+                  <option value="SOBREMESA">Sobremesa</option>
+                </select>
+                <app-error-msg [control]="form.get('tipoReceita')" label="Tipo"></app-error-msg>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-right">
+            <button class="btn btn-secondary" routerLink="/home/receita" type="button">Cancelar</button>
+            <button class="btn btn-primary" (click)="cadastrar()" [disabled]="!form.valid"><i class="fa fa-save"></i>
+              Salvar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

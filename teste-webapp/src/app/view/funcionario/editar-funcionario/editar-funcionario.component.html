@@ -1,0 +1,180 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <form [formGroup]="form">
+        <div class="card mt-4">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-12">
+                <h1><b>Editar Funcionario</b></h1>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 text-center">
+                <h3>Dados do Funcionario</h3>
+              </div>
+            </div>
+            <hr>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label">Matrícula:</label>
+              <div class="col-md-10">
+                {{funcionario?.codigo}}
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="ativo">Status:</label>
+              <div class="col-md-10">
+                <select id="ativo" name="ativo" class="form-control" formControlName="ativo" [ngClass]="aplicaCssErro('ativo')">
+                  <option [selected]="funcionario?.pessoa?.ativo" value="true">Ativo</option>
+                  <option [selected]="!funcionario?.pessoa?.ativo" value="false">Desativado</option>
+                </select>
+                <app-error-msg [control]="form.get('ativo')" label="Status"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="nome">*Nome:</label>
+              <div class="col-md-10">
+                <input type="text" id="nome" name="nome" class="form-control" formControlName="nome"
+                  [ngClass]="aplicaCssErro('nome')">
+                <app-error-msg [control]="form.get('nome')" label="Nome"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="dataNascimento">*Data de Nascimento:</label>
+              <div class="col-md-4">
+                <input type="date" id="dataNascimento" name="dataNascimento" class="form-control"
+                  formControlName="dataNascimento">
+                <app-error-msg [control]="form.get('dataNascimento')" label="Data de Nascimento"></app-error-msg>
+              </div>
+              <label class="col-md-2 col-form-label" for="sexo">*Sexo:</label>
+              <div class="col-md-4">
+                <select id="sexo" name="sexo" class="form-control" formControlName="sexo"
+                  [ngClass]="aplicaCssErro('sexo')">
+                  <option value="MASCULINO">MASCULINO</option>
+                  <option value="FEMININO">FEMININO</option>
+                </select>
+                <app-error-msg [control]="form.get('sexo')" label="Sexo"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="email">*Email:</label>
+              <div class="col-md-10">
+                <input type="email" id="email" name="email" class="form-control" autocomplete="email"
+                  [ngClass]="aplicaCssErro('email')" formControlName="email">
+                <app-error-msg [control]="form.get('email')" label="Email"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="cpf">*CPF:</label>
+              <div class="col-md-4">
+                <input type="text" id="cpf" name="cpf" class="form-control" formControlName="cpf" mask="000.000.000-00"
+                  [showMaskTyped]="true" [ngClass]="aplicaCssErro('cpf')">
+                <app-error-msg [control]="form.get('cpf')" label="CPF"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="formacao">*Formação:</label>
+              <div class="col-md-10">
+                <input type="text" id="formacao" name="formacao" class="form-control" formControlName="formacao"
+                  [ngClass]="aplicaCssErro('formacao')">
+                <app-error-msg [control]="form.get('formacao')" label="Formação"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="area">*Área:</label>
+              <div class="col-md-10">
+                <input type="text" id="area" name="area" class="form-control" formControlName="area"
+                  [ngClass]="aplicaCssErro('area')">
+                <app-error-msg [control]="form.get('area')" label="Área"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="telefone">*Telefone:</label>
+              <div class="col-md-4">
+                <input type="text" id="telefone" name="telefone" class="form-control" formControlName="telefone"
+                  mask="(00)0000-0000" [showMaskTyped]="true" [ngClass]="aplicaCssErro('telefone')">
+                <app-error-msg [control]="form.get('telefone')" label="Telefone"></app-error-msg>
+              </div>
+              <label class="col-md-2 col-form-label" for="celular">Celular:</label>
+              <div class="col-md-4">
+                <input type="text" id="celular" name="celular" class="form-control" formControlName="celular"
+                  mask="(00)0000-0000" [showMaskTyped]="true">
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-12 text-center">
+                <h3>Endereço</h3>
+              </div>
+            </div>
+            <hr>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="cep">*CEP:</label>
+              <div class="col-md-8">
+                <input type="text" id="cep" name="cep" class="form-control" formControlName="cep" mask="00.000-000"
+                  [showMaskTyped]="true" [ngClass]="aplicaCssErro('cep')">
+                <app-error-msg [control]="form.get('cep')" label="CEP"></app-error-msg>
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-primary" style="width: 100%" [disabled]="this.form.get('cep').errors"
+                  (click)="buscaCep()">
+                  buscar
+                </button>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="estado">*Estado:</label>
+              <div class="col-md-4">
+                <input type="text" id="estado" name="estado" class="form-control" formControlName="estado"
+                  [ngClass]="aplicaCssErro('estado')">
+                <app-error-msg [control]="form.get('estado')" label="Estado"></app-error-msg>
+              </div>
+              <label class="col-md-2 col-form-label" for="cidade">*Cidade:</label>
+              <div class="col-md-4">
+                <input type="text" id="cidade" name="cidade" class="form-control" formControlName="cidade"
+                  [ngClass]="aplicaCssErro('cidade')">
+                <app-error-msg [control]="form.get('cidade')" label="Cidade"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="bairro">*Bairro:</label>
+              <div class="col-md-10">
+                <input type="text" id="bairro" name="bairro" class="form-control" formControlName="bairro"
+                  [ngClass]="aplicaCssErro('bairro')">
+                <app-error-msg [control]="form.get('bairro')" label="Bairro"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="logradouro">*Logradouro:</label>
+              <div class="col-md-10">
+                <input type="text" id="logradouro" name="logradouro" class="form-control" formControlName="logradouro"
+                  [ngClass]="aplicaCssErro('logradouro')">
+                <app-error-msg [control]="form.get('logradouro')" label="Logradouro"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="numero">*Numero:</label>
+              <div class="col-md-4">
+                <input #campoNumero type="text" id="numero" name="numero" class="form-control" formControlName="numero"
+                  [ngClass]="aplicaCssErro('numero')">
+                <app-error-msg [control]="form.get('numero')" label="Numero"></app-error-msg>
+              </div>
+              <label class="col-md-2 col-form-label" for="complemento">Complemento:</label>
+              <div class="col-md-4">
+                <input type="text" id="complemento" name="complemento" class="form-control"
+                  formControlName="complemento">
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-right">
+            <button class="btn btn-secondary" routerLink="/home/funcionario" type="button">Cancelar</button>
+            <button class="btn btn-primary" [disabled]="!form.valid" (click)="editar()"><i class="fa fa-save"></i>
+              Salvar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card mt-4">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-12">
+              <h1><b>Visualizar Receita</b></h1>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h3>Dados</h3>
+            </div>
+          </div>
+          <hr>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Código:</label>
+            <div class="col-md-10">
+              {{receita?.codigo}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Nome:</label>
+            <div class="col-md-10">
+              {{receita?.nome}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Descrição:</label>
+            <div class="col-md-10">
+              {{receita?.descricao}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Ingredientes:</label>
+            <div class="col-md-10">
+              {{receita?.ingredientes}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Modo de Preparo:</label>
+            <div class="col-md-10">
+              {{receita?.modoPreparo}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label">Tipo:</label>
+            <div class="col-md-10">
+              {{receita?.tipoReceita}}
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-right">
+          <button class="btn btn-secondary" routerLink="/home/receita"><i
+              class="fa fa-arrow-alt-circle-left"></i>
+            Voltar</button>
+          <button class="btn btn-primary"
+            [routerLink]="['/home/receita/editar', receita?.codigo]" type="button">
+            Editar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-12">
+      <div class="card mt-4">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-8">
+              <h2><b>Registros Alimentares</b></h2>
+            </div>
+            <div class="col-2">
+              <!-- corrigir o link desse botao -->
+              <button class="btn btn-secondary float-right" routerLink="/home/aluno"><i
+                  class="fa fa-arrow-alt-circle-left"></i>
+                Voltar</button>
+            </div>
+            <div class="col-2">
+              <button type="button" class="btn btn-success float-right" (click)="novo()">
+                <i class="fa fa-plus"></i>&nbsp;Cadastrar
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Matrícula:</label>
+            <div class="col-md-3">
+              {{aluno?.codigo}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Nome:</label>
+            <div class="col-md-3">
+              {{aluno?.pessoa?.nome}}
+            </div>
+          </div>
+
+          <ngx-datatable [rows]="registros" [columns]="columns" class="bootstrap striped" [externalPaging]="true"
+            [count]="resposta?.totalElements" [loadingIndicator]="true" [offset]="page?.pageNumber"
+            [limit]="resposta?.size" (page)='setPage($event)' [columnMode]="'force'" [headerHeight]="50"
+            [footerHeight]="50" [rowHeight]="50">
+          </ngx-datatable>
+
+          <ng-template #dataRegistro let-row="row" let-value="value">
+            {{row?.dataRegistro | date: 'dd/MM/yyyy'}}
+          </ng-template>
+
+          <ng-template #acoes let-row="row" let-value="value">
+            <button type="button" class="btn btn-primary mr-2" tooltip="Editar" placement="auto"
+              (click)="editar(row?.codigo)">
+              <i class="fa fa-edit"></i>
+            </button>
+            <button type="button" class="btn btn-danger" tooltip="Excluir" placement="auto" (click)="remover(row)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </ng-template>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

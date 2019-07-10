@@ -1,0 +1,70 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-12">
+      <div class="card mt-4">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-10">
+              <h2><b>Alunos</b></h2>
+            </div>
+            <div class="col-2">
+              <button type="button" class="btn btn-success float-right" routerLink="/home/aluno/novo">
+                <i class="fa fa-plus"></i>&nbsp;Cadastrar
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <ngx-datatable [rows]="alunos" [columns]="columns" class="bootstrap striped" [externalPaging]="true"
+                [count]="resposta?.totalElements" [loadingIndicator]="true" [offset]="page?.pageNumber"
+                [limit]="resposta?.size" (page)='setPage($event)' [columnMode]="'force'" [headerHeight]="50"
+                [footerHeight]="50" [rowHeight]="50">
+              </ngx-datatable>
+
+              <ng-template let-row="row" let-value="value" #ativo>
+                {{isAtivo(row?.pessoa?.ativo)}}
+              </ng-template>
+
+              <ng-template let-row="row" let-value="value" #dataNascimento>
+                {{row?.pessoa?.dataNascimento}}
+              </ng-template>
+
+              <ng-template #nutricao let-row="row" let-value="value">
+                <button type="button" class="btn btn-success mr-2" tooltip="Registro Alimentar" placement="auto"
+                  [routerLink]="['/home/registro-alimentar', row?.codigo]">
+                  <i class="fa fa-apple-alt"></i>
+                </button>
+                <button type="button" class="btn btn-success mr-2" tooltip="Registro Nutricional" placement="auto"
+                  [routerLink]="['/home/registro-nutricional', row?.codigo]">
+                  <i class="fa fa-weight"></i>
+                </button>
+                <button type="button" class="btn btn-success mr-2" tooltip="Restrição Alimentar" placement="auto"
+                  [routerLink]="['restricao-alimentar', row?.codigo]">
+                  <i class="fa fa-leaf"></i>
+                </button>
+              </ng-template>
+
+              <ng-template #acoes let-row="row" let-value="value">
+
+                <button type="button" class="btn btn-primary mr-2" tooltip="Visualizar" placement="auto"
+                  [routerLink]="['visualizar', row?.codigo]">
+                  <i class="fa fa-eye"></i>
+                </button>
+                <button type="button" class="btn btn-primary mr-2" tooltip="Editar" placement="auto"
+                  [routerLink]="['editar', row?.codigo]">
+                  <i class="fa fa-edit"></i>
+                </button>
+                <button type="button" class="btn btn-danger" tooltip="Excluir" placement="auto"
+                  (click)="removerAluno(row)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

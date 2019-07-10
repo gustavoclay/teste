@@ -1,0 +1,77 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <form [formGroup]="form">
+        <div class="card mt-4">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-12">
+                <h1><b>Lançamento no Estoque</b></h1>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 text-center">
+                <h3>Dados</h3>
+              </div>
+            </div>
+            <hr>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="despensa">Despensa:</label>
+              <div class="col-md-10">
+                <select id="despensa" name="despensa" class="form-control" formControlName="despensa"
+                  [ngClass]="aplicaCssErro('despensa')">
+                  <option *ngFor="let despensa of despensas" [ngValue]="despensa">
+                    {{despensa?.nome}}
+                  </option>
+                </select>
+                <app-error-msg [control]="form.get('despensa')" label="Despensa"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="produto">Produto:</label>
+              <div class="col-md-10">
+                <select id="produto" name="produto" class="form-control" formControlName="produto"
+                  [ngClass]="aplicaCssErro('produto')">
+                  <option *ngFor="let produto of produtos" [ngValue]="produto">
+                    {{produto?.nome}} - {{produto?.marca}} - {{produto?.fornecedor?.nome}}
+                  </option>
+                </select>
+                <app-error-msg [control]="form.get('produto')" label="Produto"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="lote">Lote:</label>
+              <div class="col-md-10">
+                <input type="text" id="lote" name="lote" class="form-control" formControlName="lote" [ngClass]="aplicaCssErro('lote')">
+                <app-error-msg [control]="form.get('lote')" label="Lote"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="dataValidade">Data de Validade:</label>
+              <div class="col-md-10">
+                <input type="date" id="dataValidade" name="dataValidade" class="form-control"
+                  formControlName="dataValidade" [ngClass]="aplicaCssErro('dataValidade')">
+                <app-error-msg [control]="form.get('dataValidade')" label="Data de Validade"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="quantidade">Quantidade:</label>
+              <div class="col-md-10">
+                <input type="number" id="quantidade" name="quantidade" class="form-control" formControlName="quantidade"
+                  [ngClass]="aplicaCssErro('quantidade')">
+                <app-error-msg [control]="form.get('quantidade')" label="Quantidade"></app-error-msg>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-right">
+            <button class="btn btn-secondary" routerLink="/home/estoque" type="button">Cancelar</button>
+            <button class="btn btn-primary" (click)="cadastrar()" [disabled]="!form.valid"><i class="fa fa-save"></i>
+              Salvar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

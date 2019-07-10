@@ -1,0 +1,236 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card mt-4">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-12">
+              <h1><b>Visualizar Aluno</b></h1>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h3>Dados do Aluno</h3>
+            </div>
+          </div>
+          <hr>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Matrícula:</label>
+            <div class="col-md-9">
+              {{aluno?.codigo}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Status:</label>
+            <div class="col-md-9">
+              {{isAtivo(aluno?.pessoa?.ativo)}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Nome:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.nome}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">CPF:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.cpf}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Data de Nascimento:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.dataNascimento | date: 'dd/MM/yyyy'}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Sexo:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.sexo}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Nome do Pai:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.pai}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Nome da Mãe:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.mae}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Email:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.email}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Telefone:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.telefone}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Celular:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.celular}}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-12 text-center">
+              <h3>Endereço</h3>
+            </div>
+          </div>
+          <hr>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">CEP:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.endereco?.cep}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Logradouro:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.endereco?.logradouro}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Numero:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.endereco?.numero}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Complemento:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.endereco?.complemento}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Bairro:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.endereco?.bairro}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Cidade:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.endereco?.cidade}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Estado:</label>
+            <div class="col-md-9">
+              {{aluno?.pessoa?.endereco?.estado}}
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-12 text-center">
+              <h3>Ficha de Saúde</h3>
+            </div>
+          </div>
+          <hr>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Cartão SUS:</label>
+            <div class="col-md-9">
+              {{aluno?.fichaSaude?.cartaoSus}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Tipo Sanguíneo:</label>
+            <div class="col-md-9">
+              {{aluno?.fichaSaude?.tipoSanguineo}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Possui doenças:</label>
+            <div class="col-md-9">
+              {{isSimNao(aluno?.fichaSaude?.doenca)}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Descrição de doenças:</label>
+            <div class="col-md-9 text-justify">
+              {{aluno?.fichaSaude?.doencaDescricao}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Toma medicamentos:</label>
+            <div class="col-md-9">
+              {{isSimNao(aluno?.fichaSaude?.medicamento)}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Descrição de medicamentos:</label>
+            <div class="col-md-9 text-justify">
+              {{aluno?.fichaSaude?.medicamentoDescricao}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Toma suplementos:</label>
+            <div class="col-md-9">
+              {{isSimNao(aluno?.fichaSaude?.suplemento)}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Descrição de suplementos:</label>
+            <div class="col-md-9 text-justify">
+              {{aluno?.fichaSaude?.suplementoDescricao}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Possui deficiências:</label>
+            <div class="col-md-9">
+              {{isSimNao(aluno?.fichaSaude?.deficiencia)}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Descrição de deficiências:</label>
+            <div class="col-md-9 text-justify">
+              {{aluno?.fichaSaude?.deficienciaDescricao}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Possui alergias:</label>
+            <div class="col-md-9">
+              {{isSimNao(aluno?.fichaSaude?.alergia)}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Descrição de alergias:</label>
+            <div class="col-md-9 text-justify">
+              {{aluno?.fichaSaude?.alergiaDescricao}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Possui intolerâncias:</label>
+            <div class="col-md-9">
+              {{isSimNao(aluno?.fichaSaude?.intolerancia)}}
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Descrição de intolerâncias:</label>
+            <div class="col-md-9 text-justify">
+              {{aluno?.fichaSaude?.intoleranciaDescricao}}
+            </div>
+          </div>
+
+        </div>
+        <div class="card-footer text-right">
+          <button class="btn btn-secondary" routerLink="/home/aluno"><i class="fa fa-arrow-alt-circle-left"></i>
+            Voltar</button>
+          <button class="btn btn-primary" [routerLink]="['/home/aluno/editar', aluno?.codigo]" type="button">
+            Editar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

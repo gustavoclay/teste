@@ -1,0 +1,99 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <form [formGroup]="form">
+        <div class="card mt-4">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-12">
+                <h1>
+                  <b>Editar Produto</b>
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 text-center">
+                <h3>Dados do Produto</h3>
+              </div>
+            </div>
+            <hr>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="codigo">Codigo:</label>
+              <div class="col-md-10">
+                {{produto?.codigo}}
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="nome">Nome:</label>
+              <div class="col-md-10">
+                <input type="text" id="nome" name="nome" class="form-control" formControlName="nome"
+                  [ngClass]="aplicaCssErro('nome')">
+                <app-error-msg [control]="form.get('nome')" label="Nome"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="descricao">Descrição:</label>
+              <div class="col-md-10">
+                <input type="text" id="descricao" name="descricao" class="form-control" formControlName="descricao"
+                  [ngClass]="aplicaCssErro('descricao')" maxlength="255">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="marca">Marca:</label>
+              <div class="col-md-10">
+                <input type="text" id="marca" name="marca" class="form-control" formControlName="marca"
+                  [ngClass]="aplicaCssErro('marca')">
+                <app-error-msg [control]="form.get('marca')" label="Marca"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="quantidadeMinima">Quantidade Mínima:</label>
+              <div class="col-md-10">
+                <input type="number" min="0" step="0" id="quantidadeMinima" name="quantidadeMinima" class="form-control"
+                  formControlName="quantidadeMinima" [ngClass]="aplicaCssErro('quantidadeMinima')">
+                <app-error-msg [control]="form.get('quantidadeMinima')" label="Quantidade Mínima"></app-error-msg>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="unidade">Unidade:</label>
+              <div class="col-md-5">
+                <select id="unidade" name="unidade" class="form-control" formControlName="unidade"
+                  [ngClass]="aplicaCssErro('unidade')">
+                  <option *ngFor="let unidade of unidades" [ngValue]="unidade">
+                    {{unidade?.nome}}
+                  </option>
+                </select>
+                <app-error-msg [control]="form.get('unidade')" label="Unidade"></app-error-msg>
+              </div>
+              <div class="col-md-5">
+                Atual: {{produto?.unidade?.nome}}
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="fornecedor">Fornecedor:</label>
+              <div class="col-md-5">
+                <select id="fornecedor" name="fornecedor" class="form-control" formControlName="fornecedor"
+                  [ngClass]="aplicaCssErro('fornecedor')">
+                  <option *ngFor="let fornecedor of fornecedores" [ngValue]="fornecedor">
+                    {{fornecedor?.nome}}
+                  </option>
+                </select>
+                <app-error-msg [control]="form.get('fornecedor')" label="Fornecedor"></app-error-msg>
+              </div>
+              <div class="col-md-5">
+                Atual: {{produto?.fornecedor?.nome}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-right">
+          <button class="btn btn-secondary" routerLink="/home/produto" type="button">Cancelar</button>
+          <button class="btn btn-primary" (click)="editar()" [disabled]="!form.valid">
+            <i class="fa fa-save"></i> Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

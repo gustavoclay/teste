@@ -1,0 +1,48 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-12">
+      <div class="card mt-4">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-10">
+              <h2><b>Estoque</b></h2>
+            </div>
+            <div class="col-2">
+              <button type="button" class="btn btn-success float-right" routerLink="/home/estoque/lancamento">
+                <i class="fa fa-plus"></i>&nbsp;Lançamento
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="form">
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="despensa">Despensa:</label>
+              <div class="col-md-8">
+                <select id="despensa" name="despensa" class="form-control" formControlName="despensa"
+                  [ngClass]="aplicaCssErro('despensa')">
+                  <option *ngFor="let despensa of despensas" [ngValue]="despensa">
+                    {{despensa?.nome}}
+                  </option>
+                </select>
+                <app-error-msg [control]="form.get('despensa')" label="Despensa"></app-error-msg>
+              </div>
+              <div class="col-2">
+                <button type="button" class="btn btn-primary float-right" [disabled]="!form.valid"
+                  (click)="pesquisar()">
+                  <i class="fa fa-search"></i>&nbsp;Pesquisar
+                </button>
+              </div>
+            </div>
+          </form>
+          <br>
+          <ngx-datatable [rows]="estoques" [columns]="columns" class="bootstrap striped" [externalPaging]="true"
+            [count]="resposta?.totalElements" [loadingIndicator]="true" [offset]="page?.pageNumber"
+            [limit]="resposta?.size" (page)='setPage($event)' [columnMode]="'force'" [headerHeight]="50"
+            [footerHeight]="50" [rowHeight]="50">
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
