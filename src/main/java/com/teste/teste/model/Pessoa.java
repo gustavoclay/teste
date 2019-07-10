@@ -1,5 +1,7 @@
 package com.teste.teste.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +20,10 @@ public class Pessoa {
 	private Long id;
 
 	private String nome;
+	
+	private String email;
+	
+	private LocalDate dataNascimento;
 
 	private Estados estado;
 
