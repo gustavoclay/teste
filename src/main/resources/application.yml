@@ -1,0 +1,20 @@
+spring:
+   jackson:
+      serialization:
+         FAIL_ON_EMPTY_BEANS: false
+   datasource:
+      url: jdbc:h2:mem:testdb
+      username: user
+      password: password
+      driverClassName: org.h2.Driver
+   jpa:
+      database-plataform: org.hibernate.dialect.H2Dialect
+   http:
+      encoding:
+         charset: UTF-8
+         enabled: true
+         force: true
+server:
+   port: 12333
+   servlet:
+      context-path: /teste
