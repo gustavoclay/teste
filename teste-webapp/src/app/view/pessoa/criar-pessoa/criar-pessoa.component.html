@@ -18,7 +18,7 @@
             </div>
             <hr>
             <div class="form-group row">
-              <label class="col-md-2 col-form-label" for="nome">*Nome:</label>
+              <label class="col-md-2 col-form-label" for="nome">Nome:</label>
               <div class="col-md-10">
                 <input type="text" id="nome" name="nome" class="form-control" formControlName="nome"
                   [ngClass]="aplicaCssErro('nome')">
@@ -26,24 +26,53 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-2 col-form-label" for="dataNascimento">*Data de Nascimento:</label>
+              <label class="col-md-2 col-form-label" for="dataNascimento">Data de Nascimento:</label>
               <div class="col-md-10">
-                <input type="date" id="dataNascimento" name="dataNascimento" class="form-control" formControlName="dataNascimento">
+                <input type="date" id="dataNascimento" name="dataNascimento" class="form-control"
+                  formControlName="dataNascimento">
                 <app-error-msg [control]="form.get('dataNascimento')" label="Data de Nascimento"></app-error-msg>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-2 col-form-label" for="email">*Email:</label>
+              <label class="col-md-2 col-form-label" for="email">Email:</label>
               <div class="col-md-10">
                 <input type="email" id="email" name="email" class="form-control" autocomplete="email"
                   [ngClass]="aplicaCssErro('email')" formControlName="email">
                 <app-error-msg [control]="form.get('email')" label="Email"></app-error-msg>
               </div>
             </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="estado">Estado:</label>
+              <div class="col-md-10">
+                <select id="estado" name="estado" class="form-control" formControlName="estado"
+                  [ngClass]="aplicaCssErro('estado')">
+                  <option *ngFor="let estado of estados" [ngValue]="estado">
+                    {{estado}}
+                  </option>
+                </select>
+                <app-error-msg [control]="form.get('estado')" label="Estado"></app-error-msg>
+              </div>
+            </div>
+            <div class="row">
+              <h3>Documentos:</h3>
+              <button class="btn btn-secondary float-right" (click)="addItem()" type="button"><i
+                class="fa fa-plus"></i>Adicionar</button>
+            </div>
+            <hr>
+
+            <div class="form-group row" *ngFor="let documento of documentos; let i=index">
+              <label class="col-md-2 col-form-label" for="documento.id">Tipo:</label>
+              <div class="col-md-10">
+                <input type="texte" id="documento.id" name="tipo" class="form-control" formControlName="documento[i]">
+                <app-error-msg [control]="form.get('tipo')" label="Tipo"></app-error-msg>
+              </div>
+            </div>
+
           </div>
           <div class="card-footer text-right">
             <button class="btn btn-secondary" routerLink="/home/pessoas" type="button">Cancelar</button>
-            <button class="btn btn-primary" [disabled]="!form.valid" (click)="cadastrar()"><i class="fa fa-save"></i> Salvar</button>
+            <button class="btn btn-primary" [disabled]="!form.valid" (click)="cadastrar()"><i class="fa fa-save"></i>
+              Salvar</button>
           </div>
         </div>
       </form>

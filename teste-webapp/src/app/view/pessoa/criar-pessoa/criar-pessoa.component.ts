@@ -1,10 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Pessoa } from 'src/app/model/Pessoa';
 import { PessoaService } from 'src/app/service/pessoa.service';
+
+import { EstadosLista } from './../../../model/enums/Estados';
 
 
 @Component({
@@ -14,6 +16,12 @@ import { PessoaService } from 'src/app/service/pessoa.service';
 export class CriarPessoaComponent implements OnInit {
 
   form: FormGroup;
+  estados = EstadosLista;
+  documentos: {
+    id: number;
+    tipo: string;
+    numero: string;
+  }[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,8 +36,12 @@ export class CriarPessoaComponent implements OnInit {
     this.form = this.formBuilder.group({
       nome: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(120)]],
       email: ['', [Validators.required, Validators.email]],
-      dataNascimento: ['', [Validators.required]]
+      dataNascimento: ['', [Validators.required]],
+      estado: ['', [Validators.required]],
+      documentos: this.formBuilder.array([])
     });
+
+    this.documentos = [];
   }
 
   cadastrar() {
@@ -44,7 +56,7 @@ export class CriarPessoaComponent implements OnInit {
 
     this.pessoaService.save(pessoa).subscribe(
       res => {
-        this.router.navigate(['/home/pessoa']);
+        this.router.navigate(['/home/pessoas']);
         this.toastr.success('Pessoa ' + res.id + ' - ' + res.pessoa.nome + ' criada com sucesso!');
         this.loader.stopBackground();
       },
@@ -62,4 +74,18 @@ export class CriarPessoaComponent implements OnInit {
   aplicaCssErro(campo: string) {
     if (this.verificaValidTouched(campo)) { return 'is-invalid'; }
   }
+
+  get formArray() {
+    return this.form.get('documentos') as FormArray;
+  }
+
+  addItem(item) {
+    this.documentos.push(item);
+    this.formArray.push(this.formBuilder.control(false));
+  }
+  removeItem() {
+    this.documentos.pop();
+    this.formArray.removeAt(this.formArray.length - 1);
+  }
+
 }
