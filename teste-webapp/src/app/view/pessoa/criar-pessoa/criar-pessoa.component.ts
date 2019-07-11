@@ -15,8 +15,6 @@ export class CriarPessoaComponent implements OnInit {
 
   form: FormGroup;
 
-  @ViewChild('campoNumero') campoNumero: ElementRef;
-
   constructor(
     private formBuilder: FormBuilder,
     private pessoaService: PessoaService,
@@ -30,8 +28,7 @@ export class CriarPessoaComponent implements OnInit {
     this.form = this.formBuilder.group({
       nome: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(120)]],
       email: ['', [Validators.required, Validators.email]],
-      dataNascimento: ['', [Validators.required]],
-      estado: ['', [Validators.required]]
+      dataNascimento: ['', [Validators.required]]
     });
   }
 

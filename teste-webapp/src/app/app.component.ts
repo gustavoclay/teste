@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-import { AuthService } from './core/services/auth.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,6 +8,6 @@ import { AuthService } from './core/services/auth.service';
 export class AppComponent {
   title = 'teste-webapp';
 
-  constructor(private authService: AuthService) { }
+  constructor() { }
 
 }

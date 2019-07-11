@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AcessoNegadoComponent } from './core/views/acesso-negado.component';
 import { PaginaNaoEncontradaComponent } from './core/views/pagina-nao-encontrada.component';
-import { LoginComponent } from './security/login/login.component';
 import { HomeComponent } from './view/home/home.component';
 
 
@@ -13,7 +12,7 @@ const routes: Routes = [
     path: 'home', component: HomeComponent, children: [
       {
         path: 'pessoas',
-        loadChildren: './view/funcionario/funcionario.module#FuncionarioModule'
+        loadChildren: './view/pessoa/pessoa.module#PessoaModule'
       }
     ]
   },

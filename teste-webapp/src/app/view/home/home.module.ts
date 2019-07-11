@@ -8,7 +8,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 
 import { CoreModule } from './../../core/core.module';
-import { SecurityModule } from './../../security/security.module';
 import { HomeComponent } from './home.component';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { HomeComponent } from './home.component';
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
-    SecurityModule,
     AppRoutingModule,
     AppHeaderModule,
     AppSidebarModule,

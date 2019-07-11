@@ -7,24 +7,24 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NgxMaskModule } from 'ngx-mask';
 import { CoreModule } from 'src/app/core/core.module';
 
-import { CriarFuncionarioComponent } from './criar-funcionario/criar-funcionario.component';
-import { EditarFuncionarioComponent } from './editar-funcionario/editar-funcionario.component';
-import { FuncionarioRoutingModule } from './funcionario-routing.module';
-import { FuncionariosComponent } from './funcionarios/funcionarios.component';
-import { VisualizarFuncionarioComponent } from './visualizar-funcionario/visualizar-funcionario.component';
+import { CriarPessoaComponent } from './criar-pessoa/criar-pessoa.component';
+import { EditarPessoaComponent } from './editar-pessoa/editar-pessoa.component';
+import { PessoaRoutingModule } from './pessoa-routing.module';
+import { PessoasComponent } from './pessoas/pessoas.component';
+import { VisualizarPessoaComponent } from './visualizar-pessoa/visualizar-pessoa.component';
 
 @NgModule({
   declarations: [
-    FuncionariosComponent,
-    CriarFuncionarioComponent,
-    EditarFuncionarioComponent,
-    VisualizarFuncionarioComponent
+    PessoasComponent,
+    CriarPessoaComponent,
+    EditarPessoaComponent,
+    VisualizarPessoaComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    FuncionarioRoutingModule,
+    PessoaRoutingModule,
     NgxDatatableModule,
     TooltipModule,
     NgxMaskModule,
@@ -34,4 +34,4 @@ import { VisualizarFuncionarioComponent } from './visualizar-funcionario/visuali
   exports: [],
   providers: [],
 })
-export class FuncionarioModule { }
+export class PessoaModule { }
